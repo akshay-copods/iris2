@@ -1,0 +1,31 @@
+<h2>Enter your text</h2>
+<p><textarea id="count"></textarea></p>
+<button id="create">Submit</button>
+<button id="cancel">Cancel</button>
+<script>
+  let value;
+  document.getElementById("create").onclick = () => {
+    const textbox = document.getElementById("count");
+    value = textbox.value;
+    fetch(
+      "https://zjmfz1w2oi.execute-api.us-east-1.amazonaws.com/default/iris2",
+      {
+        mode: "no-cors",
+      }
+    ).then(
+      (response) => {
+        response.json().then((data) => {
+          console.log(data);
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+
+  const apiKey = "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";
+  const apiUrl = "https://api.openai.com/v1/chat/completions"; // Adjust the API endpoint based on your use case
+
+  const prompt = "Translate the following English text to French:";
+</script>

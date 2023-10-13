@@ -1,0 +1,17 @@
+{
+  "name": "iris2",
+  "id": "1294719181110627371",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "ui.html",
+  "networkAccess": {
+    "allowedDomains": [
+      "https://zjmfz1w2oi.execute-api.us-east-1.amazonaws.com/"
+    ],
+    "reasoning": "My plugin requires acces from all domains.",
+    "devAllowedDomains": ["*"]
+  }
+}
