@@ -1,31 +1,97 @@
 <h2>Enter your text</h2>
 <p><textarea id="count"></textarea></p>
 <button id="create">Submit</button>
-<button id="cancel">Cancel</button>
+<div id="generatedText"></div>
 <script>
+  const apiUrl = "https://api.openai.com/v1/chat/completions";
+  const apiKey = "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";
+  let response;
   let value;
-  document.getElementById("create").onclick = () => {
+  document.getElementById("create").onclick = async () => {
     const textbox = document.getElementById("count");
     value = textbox.value;
-    fetch(
-      "https://zjmfz1w2oi.execute-api.us-east-1.amazonaws.com/default/iris2",
-      {
-        mode: "no-cors",
+    const generatedTextElement = document.getElementById("generatedText");
+    generatedTextElement.innerText = value;
+
+    //open AI
+
+    try {
+      // Make a POST request to the OpenAI API using fetch
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: value }],
+          temperature: 0.7,
+        }),
+      });
+
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        // Parse the JSON response
+        const responseData = await response.json();
+        console.log(responseData);
+        generatedTextElement.innerText =
+          responseData.choices[0].message.content;
+        // Extract and log the generated text
+        const generatedText = responseData.choices[0].text;
+        console.log("Generated Text:", generatedText);
+
+        // Your further processing logic can go here
+
+        return {
+          statusCode: 200,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
+          },
+          body: { go: prompt, data: responseData.choices[0].message.content },
+        };
+      } else {
+        console.error("Error calling OpenAI API:", response.statusText);
+
+        return {
+          statusCode: response.status,
+          body: JSON.stringify({ message: "Error" }),
+        };
       }
-    ).then(
-      (response) => {
-        response.json().then((data) => {
-          console.log(data);
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    } catch (error) {
+      console.error("Error calling OpenAI API:", error);
+
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ message: "Error", error: error }),
+      };
+    }
+
+    // fetch(
+    //   "https://ljxgs64bsusiuiufeen7x5plzu0wlyae.lambda-url.us-east-1.on.aws/",
+    //   {
+    //     mode: "no-cors",
+    //     headers: {
+    //       "Accept-Encoding": "gzip, deflate, br",
+    //       Connection: "keep-alive",
+    //       Accept: "*/*",
+    //       "Content-Type": "application/json",
+    //     },
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       text: value,
+    //     }),
+    //   }
+    // )
+    //   .then((res) => {
+    //     console.log(res.body);
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     // document.write(res.data);
+    //   });
   };
-
-  const apiKey = "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";
-  const apiUrl = "https://api.openai.com/v1/chat/completions"; // Adjust the API endpoint based on your use case
-
-  const prompt = "Translate the following English text to French:";
+  //add response on the screen
 </script>

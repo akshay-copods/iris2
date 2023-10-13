@@ -4,12 +4,12 @@
   "api": "1.0.0",
   "main": "code.js",
   "capabilities": [],
-  "enableProposedApi": false,
+  "enableProposedApi": true,
   "editorType": ["figma"],
   "ui": "ui.html",
   "networkAccess": {
     "allowedDomains": [
-      "https://zjmfz1w2oi.execute-api.us-east-1.amazonaws.com/"
+      "https://ljxgs64bsusiuiufeen7x5plzu0wlyae.lambda-url.us-east-1.on.aws/"
     ],
     "reasoning": "My plugin requires acces from all domains.",
     "devAllowedDomains": ["*"]
