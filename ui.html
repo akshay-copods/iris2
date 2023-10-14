@@ -1,8 +1,10 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+  rel="stylesheet"
+/>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
 
 <!-- Starting page -->
 
@@ -10,28 +12,42 @@
   <div class="headerComponent">
     <p>Select wireframes to</p>
     <div class="sideHeader">
-      <iconify-icon icon="material-symbols:sync" width="20" height="20"></iconify-icon>
-      <iconify-icon icon="ic:baseline-remove-red-eye" width="20" height="20"></iconify-icon>
+      <iconify-icon
+        icon="material-symbols:sync"
+        width="20"
+        height="20"
+      ></iconify-icon>
+      <iconify-icon
+        icon="ic:baseline-remove-red-eye"
+        width="20"
+        height="20"
+      ></iconify-icon>
     </div>
   </div>
   <div class="cardContainer">
     <div class="content">
       <div class="headerComponent">
-        <div class="header">
-          Description
-        </div>
-        <iconify-icon icon="mdi:radio-button-checked" width="20" height="20" id="description"></iconify-icon>
+        <div class="header">Description</div>
+        <iconify-icon
+          icon="mdi:radio-button-checked"
+          width="20"
+          height="20"
+          id="description"
+        ></iconify-icon>
       </div>
       <div class="cardContent">
-        Screen-record a flow and say goodbye to misunderstandings with crystal clear communication
+        Screen-record a flow and say goodbye to misunderstandings with crystal
+        clear communication
       </div>
     </div>
     <div class="content">
       <div class="headerComponent">
-        <div class="header">
-          Compare
-        </div>
-        <iconify-icon icon="material-symbols:compare" width="20" height="20"></iconify-icon>
+        <div class="header">Compare</div>
+        <iconify-icon
+          icon="material-symbols:compare"
+          width="20"
+          height="20"
+        ></iconify-icon>
       </div>
       <div class="cardContent">
         Effortlessly compare your figma designs with currently developed screens
@@ -39,8 +55,12 @@
     </div>
   </div>
   <div class="description">
-   <p> Write a description of the flow instead</p>
-   <iconify-icon icon="material-symbols:chevron-right" width="20" height="20"></iconify-icon>
+    <p>Write a description of the flow instead</p>
+    <iconify-icon
+      icon="material-symbols:chevron-right"
+      width="20"
+      height="20"
+    ></iconify-icon>
   </div>
   <!-- <p><textarea id="count"></textarea></p>
   <button id="create">Submit</button>
@@ -55,7 +75,13 @@
   <div class="textAreaCardContainer">
     <div class="content">
       <div class="cardContent">
-        <textarea id="w3review" name="w3review" placeholder="Start Writing here..." rows="15" cols="36"></textarea>
+        <textarea
+          id="w3review"
+          name="w3review"
+          placeholder="Start Writing here..."
+          rows="15"
+          cols="36"
+        ></textarea>
       </div>
     </div>
   </div>
@@ -72,28 +98,41 @@
   <div class="headerComponent">
     <p>Select wireframes to</p>
     <div class="sideHeader">
-      <iconify-icon icon="material-symbols:sync" width="20" height="20"></iconify-icon>
-      <iconify-icon icon="ic:baseline-remove-red-eye" width="20" height="20"></iconify-icon>
+      <iconify-icon
+        icon="material-symbols:sync"
+        width="20"
+        height="20"
+      ></iconify-icon>
+      <iconify-icon
+        icon="ic:baseline-remove-red-eye"
+        width="20"
+        height="20"
+      ></iconify-icon>
     </div>
   </div>
   <div class="cardContainer">
     <div class="content">
       <div class="headerComponent">
-        <div class="header">
-          Description
-        </div>
-        <iconify-icon icon="mdi:radio-button-checked" width="20" height="20"></iconify-icon>
+        <div class="header">Description</div>
+        <iconify-icon
+          icon="mdi:radio-button-checked"
+          width="20"
+          height="20"
+        ></iconify-icon>
       </div>
       <div class="cardContent">
-        Screen-record a flow and say goodbye to misunderstandings with crystal clear communication
+        Screen-record a flow and say goodbye to misunderstandings with crystal
+        clear communication
       </div>
     </div>
     <div class="content">
       <div class="headerComponent">
-        <div class="header">
-          Compare
-        </div>
-        <iconify-icon icon="material-symbols:compare" width="20" height="20"></iconify-icon>
+        <div class="header">Compare</div>
+        <iconify-icon
+          icon="material-symbols:compare"
+          width="20"
+          height="20"
+        ></iconify-icon>
       </div>
       <div class="cardContent">
         Effortlessly compare your figma designs with currently developed screens
@@ -101,18 +140,61 @@
     </div>
   </div>
   <div class="description">
-   <p> Write a description of the flow instead</p>
-   <iconify-icon icon="material-symbols:chevron-right" width="20" height="20"></iconify-icon>
+    <p>Write a description of the flow instead</p>
+    <iconify-icon
+      icon="material-symbols:chevron-right"
+      width="20"
+      height="20"
+    ></iconify-icon>
   </div>
   <!-- <p><textarea id="count"></textarea></p>
   <button id="create">Submit</button>
   <div id="generatedText"></div> -->
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1083.0.min.js"></script>
 <script>
   const apiUrl = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = "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";
+  AWS.config.update({
+    accessKeyId: "AKIAQQR72UP2S6GICMVK",
+    secretAccessKey: "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",
+    region: "us-east-1",
+  });
+  const s3 = new AWS.S3();
+  const bucketName = "hackbucket23";
   let response;
   let value;
+
+  //function to create s3 bucket
+
+  // Function to create a file from text and upload to S3
+  function uploadToS3() {
+    const fileName = "example.txt";
+    const fileContent = "Hello, this is the content of the file!";
+
+    // Create a file from text
+    const blob = new Blob([fileContent], { type: "text/plain" });
+    const file = new File([blob], fileName);
+
+    // Upload file to S3
+    const params = {
+      Bucket: bucketName,
+      Key: fileName,
+      Body: file,
+    };
+
+    s3.upload(params, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("File uploaded successfully. ETag:", data.ETag);
+      }
+    });
+  }
+
+  // function to perform the operation on click
   document.getElementById("create").onclick = async () => {
     const textbox = document.getElementById("count");
     value = textbox.value;
@@ -146,7 +228,6 @@
       if (response.ok) {
         // Parse the JSON response
         const responseData = await response.json();
-        console.log(responseData);
         generatedTextElement.innerText =
           responseData.choices[0].message.content;
         // Extract and log the generated text
@@ -161,7 +242,7 @@
           "*"
         );
         console.log("Generated Text:", generatedText);
-
+        uploadToS3();
         // Your further processing logic can go here
 
         return {
@@ -216,40 +297,40 @@
   };
   //add response on the screen
   // navigate to intraction page
-  document.getElementById("description").onclick = ()=>{
-    var element = document.getElementById("startPage")
-    var interactionPage = document.getElementById("interactionPage")
-    interactionPage.style.display="block"
+  document.getElementById("description").onclick = () => {
+    var element = document.getElementById("startPage");
+    var interactionPage = document.getElementById("interactionPage");
+    interactionPage.style.display = "block";
     element.style.display = "none";
-  }
+  };
 
-  document.getElementById("").onclick = ()=>{
-    var element = document.getElementById("startPage")
+  document.getElementById("").onclick = () => {
+    var element = document.getElementById("startPage");
     element.style.display = "none";
-  }
+  };
 </script>
 <style>
-  body{
+  body {
     margin: 0;
-    background-color: #1F1F1F;
+    background-color: #1f1f1f;
     color: white;
     padding: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
-  .mainContainer{
+  .mainContainer {
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    gap:19px;
+    gap: 19px;
   }
 
-  .headerComponent{
+  .headerComponent {
     display: flex;
     justify-content: space-between;
   }
 
-  .header{
-    color: var(--grey-grey-300, #E0E0E0);
+  .header {
+    color: var(--grey-grey-300, #e0e0e0);
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -258,30 +339,29 @@
     letter-spacing: 0.1px;
   }
 
-  .sideHeader{
+  .sideHeader {
     display: flex;
-    gap: 18px;    
+    gap: 18px;
     align-items: center;
   }
 
-  .content{
+  .content {
     border-radius: 5px;
-    border: 1px solid #3B3E52;
+    border: 1px solid #3b3e52;
     padding: 16px;
-    display: flex ;
+    display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
   }
 
-  .contentHeader{
+  .contentHeader {
     display: flex;
     justify-content: space-between;
-
   }
 
-  .cardContent{
-    color: #FFF;
-    font-feature-settings: 'clig' off, 'liga' off;
+  .cardContent {
+    color: #fff;
+    font-feature-settings: "clig" off, "liga" off;
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
@@ -290,26 +370,26 @@
     letter-spacing: 0.4px;
   }
 
-  .cardContainer{
+  .cardContainer {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  .description{
-  color: #D0BCFF;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px; /* 142.857% */
-  letter-spacing: 0.1px;
-  display: flex;
-  gap:2px;
-  align-items: center;
-  justify-content: center;
+  .description {
+    color: #d0bcff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: 0.1px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .textAreaCardContainer{
+  .textAreaCardContainer {
     display: flex;
     width: 348px;
     height: 289px;
@@ -317,29 +397,29 @@
     flex-shrink: 0;
   }
 
-  .textAreaCardContainer textarea{
+  .textAreaCardContainer textarea {
     height: 100%;
-    background-color: #1F1F1F;
+    background-color: #1f1f1f;
     border: none;
     color: white;
     outline: none;
   }
 
-  .cardContainer textarea{
-    background: #1F1F1F;
+  .cardContainer textarea {
+    background: #1f1f1f;
   }
 
-  .generateButton{
+  .generateButton {
     display: flex;
-    justify-content: end; 
+    justify-content: end;
     margin-top: 10px;
   }
 
-  #interactionPage{
+  #interactionPage {
     display: none;
   }
 
-  #create{
+  #create {
     display: flex;
     padding: 10px 24px;
     justify-content: center;
@@ -348,18 +428,18 @@
     width: 75%;
     border-radius: 50px;
     border-radius: 100px;
-    border: 1px solid var(--m-3-sys-dark-outline, #938F99);
-    background-color: #1F1F1F;
-    color: #D0BCFF;
+    border: 1px solid var(--m-3-sys-dark-outline, #938f99);
+    background-color: #1f1f1f;
+    color: #d0bcff;
     cursor: pointer;
   }
 
-  .buttonContainer{
+  .buttonContainer {
     padding: 16px;
-    border-top:1px solid #49454F;
+    border-top: 1px solid #49454f;
   }
 
-  #comparingPage{
+  #comparingPage {
     display: none;
   }
 </style>
