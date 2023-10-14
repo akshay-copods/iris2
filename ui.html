@@ -47,6 +47,7 @@
           icon="material-symbols:compare"
           width="20"
           height="20"
+          id="compareSlides"
         ></iconify-icon>
       </div>
       <div class="cardContent">
@@ -95,61 +96,15 @@
 
 <!-- Comparing screen -->
 <div class="mainContainer" id="comparingPage">
-  <div class="headerComponent">
-    <p>Select wireframes to</p>
-    <div class="sideHeader">
-      <iconify-icon
-        icon="material-symbols:sync"
-        width="20"
-        height="20"
-      ></iconify-icon>
-      <iconify-icon
-        icon="ic:baseline-remove-red-eye"
-        width="20"
-        height="20"
-      ></iconify-icon>
-    </div>
+  <div class="compareHeader">
+    <div class="compareComponentHeader">Compare Design and Development</div>
+    <div>Slide the curtain to compare between the current design and developed version</div>
   </div>
-  <div class="cardContainer">
-    <div class="content">
-      <div class="headerComponent">
-        <div class="header">Description</div>
-        <iconify-icon
-          icon="mdi:radio-button-checked"
-          width="20"
-          height="20"
-        ></iconify-icon>
-      </div>
-      <div class="cardContent">
-        Screen-record a flow and say goodbye to misunderstandings with crystal
-        clear communication
-      </div>
-    </div>
-    <div class="content">
-      <div class="headerComponent">
-        <div class="header">Compare</div>
-        <iconify-icon
-          icon="material-symbols:compare"
-          width="20"
-          height="20"
-        ></iconify-icon>
-      </div>
-      <div class="cardContent">
-        Effortlessly compare your figma designs with currently developed screens
-      </div>
-    </div>
+  <div class="c-compare" style="--value:50%;">
+    <img class="c-compare__left" src="../iris2/image.png" alt="Color" />
+    <iframe class="c-compare__right" src="http://testing-lexee-ai.surge.sh/" title="W3Schools Free Online Web Tutorials"></iframe>
+    <input type="range" class="c-rng c-compare__range" min="0" max="100" value="50" oninput="this.parentNode.style.setProperty('--value', `${this.value}%`)" />
   </div>
-  <div class="description">
-    <p>Write a description of the flow instead</p>
-    <iconify-icon
-      icon="material-symbols:chevron-right"
-      width="20"
-      height="20"
-    ></iconify-icon>
-  </div>
-  <!-- <p><textarea id="count"></textarea></p>
-  <button id="create">Submit</button>
-  <div id="generatedText"></div> -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -280,10 +235,21 @@
     element.style.display = "none";
   };
 
-  document.getElementById("").onclick = () => {
-    var element = document.getElementById("startPage");
-    element.style.display = "none";
-  };
+  document.getElementById("compareSlides").onclick =()=>{
+    var startPage = document.getElementById("startPage");
+    var element = document.getElementById("comparingPage")
+    element.style.display = "block";
+    startPage.style.display="none"
+    parent.postMessage(
+          {
+            pluginMessage: {
+              type: "compare-slides",
+            },
+          },
+          "*"
+        );
+    
+  }
 </script>
 <style>
   body {
@@ -368,6 +334,7 @@
     width: 21.75rem;
     height: 18.0625rem;
     align-items: flex-start;
+    flex-shrink: 0;
   }
 
   .textAreaCardContainer textarea {
@@ -415,4 +382,101 @@
   #comparingPage {
     display: none;
   }
+
+  .compareHeader{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+  }
+  .compareComponentHeader{
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+  }
+
+  .compareHeader div:nth-child(2){
+    opacity: 0.5;
+  }
+
+  .c-compare {
+  --h: 9;
+  --m: 1rem 0;
+  --w: 16;
+  --thumb-bgc: blue;
+  --thumb-bgc-focus: hsla(0, 70%, 70%, 0.7);
+  --thumb-w: 1rem;
+
+  margin: var(--m);
+  position: relative;
+}
+.c-compare::after {
+  content: "";
+  display: block;
+  padding-bottom: calc((var(--h) / var(--w)) * 100%);
+}
+.c-compare__left,
+.c-compare__right {
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+.c-compare__left {
+  clip-path: polygon(0% 0%, var(--value) 0%, var(--value) 100%, 0% 100%);
+}
+.c-compare__right {
+  clip-path: polygon(100% 0%, var(--value) 0%, var(--value) 100%, 100% 100%);
+}
+.c-compare__range {
+  background-color: transparent;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 100%;
+  margin: 0;
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.c-compare__range::-moz-range-thumb {
+  background-color: var(--thumb-bgc);
+  cursor: ew-resize;
+  height: 100%;  
+  width: var(--thumb-w);
+}
+.c-compare__range::-webkit-slider-thumb {
+  background-color: var(--thumb-bgc);
+  cursor: ew-resize;
+  height: 100%;  
+  width: var(--thumb-w);
+}
+.c-compare__range:focus::-webkit-slider-thumb {
+  background-color: var(--thumb-bgc-focus);
+  box-shadow: 0 0 0 3px var(--thumb-bgc);
+}
+.c-compare__range:focus::-moz-range-thumb {
+  background-color: var(--thumb-bgc-focus);
+  box-shadow: 0 0 0 3px var(--thumb-bgc);
+}
+.c-compare__range::-moz-range-track {
+  background: transparent;
+  background-size: 100%;
+  box-sizing: border-box;
+}
+.c-compare__range::-webkit-slider-runnable-track {
+  background: transparent;
+  background-size: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+.c-compare__range,
+.c-compare__range::-webkit-slider-runnable-track,
+.c-compare__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
 </style>

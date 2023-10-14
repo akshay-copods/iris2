@@ -7,7 +7,7 @@
 // full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
 
 // This shows the HTML page in "ui.html".
-figma.showUI(__html__);
+figma.showUI(__html__, {width:  380, height:455});
 
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
@@ -52,6 +52,10 @@ figma.ui.onmessage = (msg) => {
   // your HTML page is to use an object with a "type" property like this.
   if (msg.type === "create-rectangles") {
     printData(msg.generatedText);
+  }
+
+  if(msg.type=== "compare-slides"){
+    figma.ui.resize( 935, 741);
   }
   // Make sure to close the plugin when you're done. Otherwise the plugin will
   // keep running, which shows the cancel button at the bottom of the screen.
