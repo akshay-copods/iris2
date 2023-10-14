@@ -12,23 +12,43 @@ figma.showUI(__html__);
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
-figma.ui.onmessage = msg => {
+//create a figma frame and add text onto it
+
+async function createTextFrame(y: string) {
+  // Create a new frame
+  const frame = figma.createFrame();
+  frame.resize(200, 100); // Set the dimensions of the frame
+
+  // Load the font
+
+  // Create a new text node
+  const textNode = figma.createText();
+  textNode.characters = y; // Set the text content
+  textNode.maxWidth = 200;
+  // Position the text node within the frame
+  textNode.x = 20; // X-coordinate
+  textNode.y = 30; // Y-coordinate
+
+  // Set the font for the text node
+  textNode.fontName = { family: "Inter", style: "Regular" };
+
+  // Add the text node as a child of the frame
+  frame.appendChild(textNode);
+
+  // Add the frame to the current page
+  figma.currentPage.appendChild(frame);
+}
+async function printData(word) {
+  await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+  createTextFrame(word);
+}
+figma.ui.onmessage = (msg) => {
   // One way of distinguishing between different types of messages sent from
   // your HTML page is to use an object with a "type" property like this.
-  if (msg.type === 'create-rectangles') {
-    const nodes: SceneNode[] = [];
-    for (let i = 0; i < msg.count; i++) {
-      const rect = figma.createRectangle();
-      rect.x = i * 150;
-      rect.fills = [{type: 'SOLID', color: {r: 1, g: 0.5, b: 0}}];
-      figma.currentPage.appendChild(rect);
-      nodes.push(rect);
-    }
-    figma.currentPage.selection = nodes;
-    figma.viewport.scrollAndZoomIntoView(nodes);
+  if (msg.type === "create-rectangles") {
+    printData(msg.generatedText);
   }
-
   // Make sure to close the plugin when you're done. Otherwise the plugin will
   // keep running, which shows the cancel button at the bottom of the screen.
-  figma.closePlugin();
+  // figma.closePlugin();
 };

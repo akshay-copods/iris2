@@ -4,12 +4,13 @@
 <div id="generatedText"></div>
 <script>
   const apiUrl = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = "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";
   let response;
   let value;
   document.getElementById("create").onclick = async () => {
     const textbox = document.getElementById("count");
     value = textbox.value;
+
     const generatedTextElement = document.getElementById("generatedText");
     generatedTextElement.innerText = value;
 
@@ -38,7 +39,16 @@
         generatedTextElement.innerText =
           responseData.choices[0].message.content;
         // Extract and log the generated text
-        const generatedText = responseData.choices[0].text;
+        const generatedText = responseData.choices[0].message.content;
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: "create-rectangles",
+              generatedText: generatedText,
+            },
+          },
+          "*"
+        );
         console.log("Generated Text:", generatedText);
 
         // Your further processing logic can go here
