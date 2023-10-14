@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="buttonContainer">
-    <div class="generateButton">
+    <div class="generateButton" id="generateButton">
       <button id="create">Generate AI Summary</button>
     </div>
   </div>
@@ -156,7 +156,7 @@
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1083.0.min.js"></script>
 <script>
   const apiUrl = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = "";
   AWS.config.update({
     accessKeyId: "AKIAQQR72UP2S6GICMVK",
     secretAccessKey: "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",
@@ -195,8 +195,8 @@
   }
 
   // function to perform the operation on click
-  document.getElementById("create").onclick = async () => {
-    const textbox = document.getElementById("count");
+  document.getElementById("generateButton").onclick = async () => {
+    const textbox = document.getElementById("w3review");
     value = textbox.value;
 
     const generatedTextElement = document.getElementById("generatedText");
@@ -270,30 +270,6 @@
         body: JSON.stringify({ message: "Error", error: error }),
       };
     }
-
-    // fetch(
-    //   "https://ljxgs64bsusiuiufeen7x5plzu0wlyae.lambda-url.us-east-1.on.aws/",
-    //   {
-    //     mode: "no-cors",
-    //     headers: {
-    //       "Accept-Encoding": "gzip, deflate, br",
-    //       Connection: "keep-alive",
-    //       Accept: "*/*",
-    //       "Content-Type": "application/json",
-    //     },
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       text: value,
-    //     }),
-    //   }
-    // )
-    //   .then((res) => {
-    //     console.log(res.body);
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     // document.write(res.data);
-    //   });
   };
   //add response on the screen
   // navigate to intraction page
@@ -310,27 +286,27 @@
   };
 </script>
 <style>
-  body{
+  body {
     margin: 0;
-    background-color: #1F1F1F;
+    background-color: #1f1f1f;
     color: white;
     padding: 1rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
-  .mainContainer{
-    font-size: .75rem;
+  .mainContainer {
+    font-size: 0.75rem;
     display: flex;
     flex-direction: column;
-    gap:1.1875rem;
+    /* gap: 1.1875rem; */
   }
 
-  .headerComponent{
+  .headerComponent {
     display: flex;
     justify-content: space-between;
   }
 
-  .header{
-    color: var(--grey-grey-300, #E0E0E0);
+  .header {
+    color: var(--grey-grey-300, #e0e0e0);
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
@@ -339,106 +315,104 @@
     letter-spacing: 0.0625rem;
   }
 
-  .sideHeader{
+  .sideHeader {
     display: flex;
-    gap: 1.125rem;    
+    gap: 1.125rem;
     align-items: center;
   }
 
-  .content{
-    border-radius: .3125rem;
-    border: 1px solid #3B3E52;
+  .content {
+    border-radius: 0.3125rem;
+    border: 1px solid #3b3e52;
     padding: 1rem;
-    display: flex ;
+    display: flex;
     flex-direction: column;
-    gap:.5rem;
+    gap: 0.5rem;
   }
 
-  .contentHeader{
+  .contentHeader {
     display: flex;
     justify-content: space-between;
-
   }
 
-  .cardContent{
-    color: #FFF;
-    font-feature-settings: 'clig' off, 'liga' off;
+  .cardContent {
+    color: #fff;
+    font-feature-settings: "clig" off, "liga" off;
     font-family: Inter;
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 400;
     line-height: 166%; /* 19.92px */
   }
 
-  .cardContainer{
+  .cardContainer {
     display: flex;
     flex-direction: column;
-    gap: .9375rem;
+    gap: 0.9375rem;
   }
 
-  .description{
-  color: #D0BCFF;
-  text-align: center;
-  font-size: .875rem;
-  font-weight: 500;
-  line-height: 1.25rem; /* 142.857% */
-  display: flex;
-  gap:.125rem;
-  align-items: center;
-  justify-content: center;
+  .description {
+    color: #d0bcff;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+    display: flex;
+    gap: 0.125rem;
+    align-items: center;
+    justify-content: center;
   }
 
-  .textAreaCardContainer{
+  .textAreaCardContainer {
     display: flex;
     width: 21.75rem;
     height: 18.0625rem;
     align-items: flex-start;
-    flex-shrink: 0;
   }
 
-  .textAreaCardContainer textarea{
+  .textAreaCardContainer textarea {
     height: 100%;
-    background-color: #1F1F1F;
+    background-color: #1f1f1f;
     border: none;
     color: white;
     outline: none;
   }
 
-  .cardContainer textarea{
-    background: #1F1F1F;
+  .cardContainer textarea {
+    background: #1f1f1f;
   }
 
-  .generateButton{
+  .generateButton {
     display: flex;
-    justify-content: end; 
-    margin-top: .625rem;
+    justify-content: end;
+    margin-top: 0.625rem;
   }
 
-  #interactionPage{
+  #interactionPage {
     display: none;
   }
 
-  #create{
+  #create {
     display: flex;
-    padding: .625rem 1.5rem;
+    padding: 0.625rem 1.5rem;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
     width: 75%;
     border-radius: 3.125rem;
     border-radius: 6.25rem;
-    border: 1px solid var(--m-3-sys-dark-outline, #938F99);
-    background-color: #1F1F1F;
-    color: #D0BCFF;
+    border: 1px solid var(--m-3-sys-dark-outline, #938f99);
+    background-color: #1f1f1f;
+    color: #d0bcff;
     cursor: pointer;
   }
 
-  .buttonContainer{
+  .buttonContainer {
     padding: 1rem;
-    border-top:1px solid #49454F;
+    border-top: 1px solid #49454f;
   }
 
-  #comparingPage{
+  #comparingPage {
     display: none;
   }
 </style>
