@@ -1,7 +1,113 @@
-<h2>Enter your text</h2>
-<p><textarea id="count"></textarea></p>
-<button id="create">Submit</button>
-<div id="generatedText"></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+<!-- Starting page -->
+
+<div class="mainContainer" id="startPage">
+  <div class="headerComponent">
+    <p>Select wireframes to</p>
+    <div class="sideHeader">
+      <iconify-icon icon="material-symbols:sync" width="20" height="20"></iconify-icon>
+      <iconify-icon icon="ic:baseline-remove-red-eye" width="20" height="20"></iconify-icon>
+    </div>
+  </div>
+  <div class="cardContainer">
+    <div class="content">
+      <div class="headerComponent">
+        <div class="header">
+          Description
+        </div>
+        <iconify-icon icon="mdi:radio-button-checked" width="20" height="20" id="description"></iconify-icon>
+      </div>
+      <div class="cardContent">
+        Screen-record a flow and say goodbye to misunderstandings with crystal clear communication
+      </div>
+    </div>
+    <div class="content">
+      <div class="headerComponent">
+        <div class="header">
+          Compare
+        </div>
+        <iconify-icon icon="material-symbols:compare" width="20" height="20"></iconify-icon>
+      </div>
+      <div class="cardContent">
+        Effortlessly compare your figma designs with currently developed screens
+      </div>
+    </div>
+  </div>
+  <div class="description">
+   <p> Write a description of the flow instead</p>
+   <iconify-icon icon="material-symbols:chevron-right" width="20" height="20"></iconify-icon>
+  </div>
+  <!-- <p><textarea id="count"></textarea></p>
+  <button id="create">Submit</button>
+  <div id="generatedText"></div> -->
+</div>
+
+<!-- Interaction Summary Dialog -->
+<div class="mainContainer" id="interactionPage">
+  <div class="headerComponent">
+    <p>Interaction Summary</p>
+  </div>
+  <div class="textAreaCardContainer">
+    <div class="content">
+      <div class="cardContent">
+        <textarea id="w3review" name="w3review" placeholder="Start Writing here..." rows="15" cols="36"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="buttonContainer">
+    <div class="generateButton">
+      <button id="create">Generate AI Summary</button>
+    </div>
+  </div>
+  <div id="generatedText"></div>
+</div>
+
+<!-- Comparing screen -->
+<div class="mainContainer" id="comparingPage">
+  <div class="headerComponent">
+    <p>Select wireframes to</p>
+    <div class="sideHeader">
+      <iconify-icon icon="material-symbols:sync" width="20" height="20"></iconify-icon>
+      <iconify-icon icon="ic:baseline-remove-red-eye" width="20" height="20"></iconify-icon>
+    </div>
+  </div>
+  <div class="cardContainer">
+    <div class="content">
+      <div class="headerComponent">
+        <div class="header">
+          Description
+        </div>
+        <iconify-icon icon="mdi:radio-button-checked" width="20" height="20"></iconify-icon>
+      </div>
+      <div class="cardContent">
+        Screen-record a flow and say goodbye to misunderstandings with crystal clear communication
+      </div>
+    </div>
+    <div class="content">
+      <div class="headerComponent">
+        <div class="header">
+          Compare
+        </div>
+        <iconify-icon icon="material-symbols:compare" width="20" height="20"></iconify-icon>
+      </div>
+      <div class="cardContent">
+        Effortlessly compare your figma designs with currently developed screens
+      </div>
+    </div>
+  </div>
+  <div class="description">
+   <p> Write a description of the flow instead</p>
+   <iconify-icon icon="material-symbols:chevron-right" width="20" height="20"></iconify-icon>
+  </div>
+  <!-- <p><textarea id="count"></textarea></p>
+  <button id="create">Submit</button>
+  <div id="generatedText"></div> -->
+</div>
 <script>
   const apiUrl = "https://api.openai.com/v1/chat/completions";
   const apiKey = "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";
@@ -109,4 +215,151 @@
     //   });
   };
   //add response on the screen
+  // navigate to intraction page
+  document.getElementById("description").onclick = ()=>{
+    var element = document.getElementById("startPage")
+    var interactionPage = document.getElementById("interactionPage")
+    interactionPage.style.display="block"
+    element.style.display = "none";
+  }
+
+  document.getElementById("").onclick = ()=>{
+    var element = document.getElementById("startPage")
+    element.style.display = "none";
+  }
 </script>
+<style>
+  body{
+    margin: 0;
+    background-color: #1F1F1F;
+    color: white;
+    padding: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
+  .mainContainer{
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap:19px;
+  }
+
+  .headerComponent{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header{
+    color: var(--grey-grey-300, #E0E0E0);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.1px;
+  }
+
+  .sideHeader{
+    display: flex;
+    gap: 18px;    
+    align-items: center;
+  }
+
+  .content{
+    border-radius: 5px;
+    border: 1px solid #3B3E52;
+    padding: 16px;
+    display: flex ;
+    flex-direction: column;
+    gap:8px;
+  }
+
+  .contentHeader{
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .cardContent{
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166%; /* 19.92px */
+    letter-spacing: 0.4px;
+  }
+
+  .cardContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .description{
+  color: #D0BCFF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.1px;
+  display: flex;
+  gap:2px;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .textAreaCardContainer{
+    display: flex;
+    width: 348px;
+    height: 289px;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .textAreaCardContainer textarea{
+    height: 100%;
+    background-color: #1F1F1F;
+    border: none;
+    color: white;
+    outline: none;
+  }
+
+  .cardContainer textarea{
+    background: #1F1F1F;
+  }
+
+  .generateButton{
+    display: flex;
+    justify-content: end; 
+    margin-top: 10px;
+  }
+
+  #interactionPage{
+    display: none;
+  }
+
+  #create{
+    display: flex;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 75%;
+    border-radius: 50px;
+    border-radius: 100px;
+    border: 1px solid var(--m-3-sys-dark-outline, #938F99);
+    background-color: #1F1F1F;
+    color: #D0BCFF;
+    cursor: pointer;
+  }
+
+  .buttonContainer{
+    padding: 16px;
+    border-top:1px solid #49454F;
+  }
+
+  #comparingPage{
+    display: none;
+  }
+</style>
