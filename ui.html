@@ -87,7 +87,10 @@
   </div>
   <div class="buttonContainer">
     <div class="generateButton" id="generateButton">
-      <button id="create">Generate AI Summary</button>
+      <button id="create">
+        <div id="loader"></div>
+        Generate AI Summary
+      </button>
     </div>
   </div>
   <div id="generatedText"></div>
@@ -163,10 +166,11 @@
     region: "us-east-1",
   });
   const s3 = new AWS.S3();
+  const loader = document.getElementById("loader");
   const bucketName = "hackbucket23";
   let response;
   let value;
-
+  let s3Url;
   //function to create s3 bucket
 
   // Function to create a file from text and upload to S3
@@ -189,7 +193,17 @@
       if (err) {
         console.error(err);
       } else {
+        s3Url = data.Location;
         console.log("File uploaded successfully. ETag:", data.ETag);
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: "s3-url",
+              s3Url: s3Url,
+            },
+          },
+          "*"
+        );
       }
     });
   }
@@ -200,7 +214,7 @@
     value = textbox.value;
 
     const generatedTextElement = document.getElementById("generatedText");
-    generatedTextElement.innerText = value;
+    loader.style.display = "block";
 
     //open AI
 
@@ -226,10 +240,10 @@
 
       // Check if the request was successful (status code 2xx)
       if (response.ok) {
+        loader.style.display = "none";
+
         // Parse the JSON response
         const responseData = await response.json();
-        generatedTextElement.innerText =
-          responseData.choices[0].message.content;
         // Extract and log the generated text
         const generatedText = responseData.choices[0].message.content;
         parent.postMessage(
@@ -263,6 +277,8 @@
         };
       }
     } catch (error) {
+      loader.style.display = "none";
+
       console.error("Error calling OpenAI API:", error);
 
       return {
@@ -414,5 +430,23 @@
 
   #comparingPage {
     display: none;
+  }
+  #loader {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>

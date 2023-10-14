@@ -7,7 +7,7 @@
 // full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
 
 // This shows the HTML page in "ui.html".
-figma.showUI(__html__);
+figma.showUI(__html__, { height: 455, width: 380 });
 
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
@@ -26,7 +26,6 @@ async function createTextFrame(y: string) {
   const textNode = figma.createText();
   textNode.characters = y; // Set the text content
   textNode.textAutoResize = "WIDTH_AND_HEIGHT";
-  textNode.resize(400, 300);
 
   // Position the text node within the frame
   textNode.x = 20; // X-coordinate
@@ -53,6 +52,7 @@ figma.ui.onmessage = (msg) => {
   if (msg.type === "create-rectangles") {
     printData(msg.generatedText);
   }
+
   // Make sure to close the plugin when you're done. Otherwise the plugin will
   // keep running, which shows the cancel button at the bottom of the screen.
   // figma.closePlugin();
