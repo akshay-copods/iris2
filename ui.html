@@ -4,7 +4,7 @@
 <div id="generatedText"></div>
 <script>
   const apiUrl = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = "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";
   let response;
   let value;
   document.getElementById("create").onclick = async () => {
@@ -26,7 +26,12 @@
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: value }],
+          messages: [
+            {
+              role: "user",
+              content: `Summarise briefly the following content for a developer using technical terms ${value}`,
+            },
+          ],
           temperature: 0.7,
         }),
       });

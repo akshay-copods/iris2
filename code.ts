@@ -17,21 +17,26 @@ figma.showUI(__html__);
 async function createTextFrame(y: string) {
   // Create a new frame
   const frame = figma.createFrame();
-  frame.resize(200, 100); // Set the dimensions of the frame
+  // Set the dimensions of the frame
+  frame.resize(400, 300);
 
   // Load the font
 
   // Create a new text node
   const textNode = figma.createText();
   textNode.characters = y; // Set the text content
-  textNode.maxWidth = 200;
+  textNode.textAutoResize = "WIDTH_AND_HEIGHT";
+  textNode.resize(400, 300);
+
   // Position the text node within the frame
   textNode.x = 20; // X-coordinate
   textNode.y = 30; // Y-coordinate
 
   // Set the font for the text node
   textNode.fontName = { family: "Inter", style: "Regular" };
-
+  if (textNode.width > 400) {
+    textNode.resize(400, textNode.height + textNode.fontSize); // You can adjust this value as needed
+  }
   // Add the text node as a child of the frame
   frame.appendChild(textNode);
 
