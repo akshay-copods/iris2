@@ -310,136 +310,135 @@
   };
 </script>
 <style>
-  body {
+  body{
     margin: 0;
-    background-color: #1f1f1f;
+    background-color: #1F1F1F;
     color: white;
-    padding: 16px;
-    font-family: "Roboto", sans-serif;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
   }
-  .mainContainer {
-    font-size: 12px;
+  .mainContainer{
+    font-size: .75rem;
     display: flex;
     flex-direction: column;
-    gap: 19px;
+    gap:1.1875rem;
   }
 
-  .headerComponent {
+  .headerComponent{
     display: flex;
     justify-content: space-between;
   }
 
-  .header {
-    color: var(--grey-grey-300, #e0e0e0);
+  .header{
+    color: var(--grey-grey-300, #E0E0E0);
     font-family: Inter;
-    font-size: 16px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 20px; /* 125% */
-    letter-spacing: 0.1px;
+    line-height: 1.25rem; /* 125% */
+    letter-spacing: 0.0625rem;
   }
 
-  .sideHeader {
+  .sideHeader{
     display: flex;
-    gap: 18px;
+    gap: 1.125rem;    
     align-items: center;
   }
 
-  .content {
-    border-radius: 5px;
-    border: 1px solid #3b3e52;
-    padding: 16px;
-    display: flex;
+  .content{
+    border-radius: .3125rem;
+    border: 1px solid #3B3E52;
+    padding: 1rem;
+    display: flex ;
     flex-direction: column;
-    gap: 8px;
+    gap:.5rem;
   }
 
-  .contentHeader {
+  .contentHeader{
     display: flex;
     justify-content: space-between;
+
   }
 
-  .cardContent {
-    color: #fff;
-    font-feature-settings: "clig" off, "liga" off;
+  .cardContent{
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
     font-family: Inter;
-    font-size: 12px;
+    font-size: .75rem;
     font-style: normal;
     font-weight: 400;
     line-height: 166%; /* 19.92px */
-    letter-spacing: 0.4px;
   }
 
-  .cardContainer {
+  .cardContainer{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: .9375rem;
   }
 
-  .description {
-    color: #d0bcff;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px; /* 142.857% */
-    letter-spacing: 0.1px;
-    display: flex;
-    gap: 2px;
-    align-items: center;
-    justify-content: center;
+  .description{
+  color: #D0BCFF;
+  text-align: center;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem; /* 142.857% */
+  display: flex;
+  gap:.125rem;
+  align-items: center;
+  justify-content: center;
   }
 
-  .textAreaCardContainer {
+  .textAreaCardContainer{
     display: flex;
-    width: 348px;
-    height: 289px;
+    width: 21.75rem;
+    height: 18.0625rem;
     align-items: flex-start;
     flex-shrink: 0;
   }
 
-  .textAreaCardContainer textarea {
+  .textAreaCardContainer textarea{
     height: 100%;
-    background-color: #1f1f1f;
+    background-color: #1F1F1F;
     border: none;
     color: white;
     outline: none;
   }
 
-  .cardContainer textarea {
-    background: #1f1f1f;
+  .cardContainer textarea{
+    background: #1F1F1F;
   }
 
-  .generateButton {
+  .generateButton{
     display: flex;
-    justify-content: end;
-    margin-top: 10px;
+    justify-content: end; 
+    margin-top: .625rem;
   }
 
-  #interactionPage {
+  #interactionPage{
     display: none;
   }
 
-  #create {
+  #create{
     display: flex;
-    padding: 10px 24px;
+    padding: .625rem 1.5rem;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: .5rem;
     width: 75%;
-    border-radius: 50px;
-    border-radius: 100px;
-    border: 1px solid var(--m-3-sys-dark-outline, #938f99);
-    background-color: #1f1f1f;
-    color: #d0bcff;
+    border-radius: 3.125rem;
+    border-radius: 6.25rem;
+    border: 1px solid var(--m-3-sys-dark-outline, #938F99);
+    background-color: #1F1F1F;
+    color: #D0BCFF;
     cursor: pointer;
   }
 
-  .buttonContainer {
-    padding: 16px;
-    border-top: 1px solid #49454f;
+  .buttonContainer{
+    padding: 1rem;
+    border-top:1px solid #49454F;
   }
 
-  #comparingPage {
+  #comparingPage{
     display: none;
   }
 </style>
