@@ -5,9 +5,65 @@
 // the *figma document* via the figma global object.
 // You can access browser APIs in the <script> tag inside "ui.html" which has a
 // full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
+function assignRandomNumber() {
+  // Array of three numbers
+  let numbers = [1, 2, 3];
 
+  // Loop three times
+  for (let i = 0; i < 3; i++) {
+    // Get a random index
+    const randomIndex = Math.floor(Math.random() * numbers.length);
+
+    // Assign the number at the random index to a variable
+    const assignedNumber = numbers[randomIndex];
+    console.log(`Assigned Number: ${assignedNumber}`);
+
+    // Remove the assigned number from the array
+    numbers.splice(randomIndex, 1);
+  }
+}
+
+const usedNumbers = [];
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, { width: 380, height: 455 });
+async function loadFont() {
+  await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+  const allLayers = figma.currentPage.children;
+  const frames = allLayers.filter((layer) => layer.type === "FRAME");
+  for (const frame of frames) {
+    const newFrame = figma.createFrame();
+    newFrame.resize(100, 100);
+    // position the frame on top right of the current frame
+    newFrame.x = frame.x + frame.width;
+    newFrame.y = frame.y;
+    // add different numbers to the new frame
+    const textNode = figma.createText();
+    textNode.characters = assignUniqueNumber().toString();
+    textNode.fontSize = 20;
+    textNode.textAutoResize = "WIDTH_AND_HEIGHT";
+    textNode.x = 20; // X-coordinate
+    textNode.y = 30; // Y-coordinate
+    textNode.fontName = { family: "Inter", style: "Regular" };
+    newFrame.appendChild(textNode);
+    figma.currentPage.appendChild(newFrame);
+  }
+
+  function assignUniqueNumber() {
+    let number;
+    do {
+      number = assignRandomNumber();
+    } while (usedNumbers.includes(number));
+
+    usedNumbers.push(number);
+    return number;
+  }
+
+  function assignRandomNumber() {
+    // Your logic to generate a random number
+    return Math.floor(Math.random() * 21) + 70;
+  }
+}
+loadFont();
 
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
@@ -49,6 +105,7 @@ async function printData(word) {
 figma.ui.onmessage = (msg) => {
   // One way of distinguishing between different types of messages sent from
   // your HTML page is to use an object with a "type" property like this.
+
   if (msg.type === "create-rectangles") {
     printData(msg.generatedText);
   }
